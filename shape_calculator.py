@@ -24,11 +24,20 @@ class Rectangle:
             return "Too big for picture." 
         else:
         # The number of lines should be equal to the height and the number of "*" in each line should be equal to the width. There should be a new line (\n) at the end of each line.
-            pass
+            pictureString = ''
+            for i in range(self.height):
+                pictureString += '*' * self.width + '\n'
+            return pictureString
 
     def get_amount_inside(self, shape):
         # Take another shape and return the number of times it could fit inside the shape
-        pass
+        xCount = (self.width - self.width % shape.width) / shape.width
+        yCount = (self.height - self.height % shape.height) / shape.height
+        if xCount == 0 or yCount == 0:
+            return 0
+        else:
+            return int(xCount) * int(yCount) 
+
 
     def __str__(self):
         return f"Rectangle(width={self.width}, height={self.height})"
@@ -51,3 +60,4 @@ class Square(Rectangle):
 
     def __str__(self):
         return f"Square(side={self.width})"
+
